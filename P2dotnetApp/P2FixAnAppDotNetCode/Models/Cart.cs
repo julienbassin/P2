@@ -29,6 +29,11 @@ namespace P2FixAnAppDotNetCode.Models
         public void AddItem(Product product, int quantity)
         {
             // TODO implement the method
+            List<Product> Listproduct = new List<Product>();
+            if (!Listproduct.Add(product))
+            {
+                product.Stock += quantity;
+            }
         }
 
         /// <summary>
