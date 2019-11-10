@@ -29,10 +29,22 @@ namespace P2FixAnAppDotNetCode.Models
         public void AddItem(Product product, int quantity)
         {
             // TODO implement the method
-            List<Product> Listproduct = new List<Product>();
-            if (!Listproduct.Add(product))
+            //List<Product> Listproduct = new List<Product>();
+            CartLine currentProduct = new CartLine(product);
+            if (quantity > 0)
             {
-                product.Stock += quantity;
+                if (Lines.Contains(currentProduct))
+                {
+                    currentProduct.Quantity += quantity;
+                    currentProduct.Product.Stock -= quantity;
+                }
+
+                else
+                {
+                    currentProduct.Quantity += quantity;
+                    currentProduct.Product.Stock -= quantity;
+                    Lines.Append(currentProduct);
+                }
             }
         }
 
@@ -62,13 +74,17 @@ namespace P2FixAnAppDotNetCode.Models
         public double GetAverageValue()
         {
             // TODO implement the method
-            double total = 0;
-            foreach (var item in this.Lines)
+            double totalAverage = 0;
+            double totalQuantity = 0;
+            double average = 0;
+            foreach (var item in GetCartLineList())
             {
                 Console.WriteLine($"{item.Product} ==> ${item.Quantity}");
+                totalAverage += (item.Product.Price * item.Quantity);
+                totalQuantity += item.Quantity;
             }
-
-            return total;
+            average = totalAverage / totalQuantity;
+            return average;
         }
 
         /// <summary>
@@ -100,6 +116,18 @@ namespace P2FixAnAppDotNetCode.Models
 
     public class CartLine
     {
+
+        public CartLine(Product product)
+        {
+            this.Product = product;
+        }
+
+        public CartLine(Product product, int quantity)
+        {
+            this.Product = product;
+            this.Quantity = quantity;
+        }
+
         public int OrderLineId { get; set; }
         public Product Product { get; set; }
         public int Quantity { get; set; }
