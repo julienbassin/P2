@@ -42,7 +42,6 @@ namespace P2FixAnAppDotNetCode.Models
                 else
                 {
                     currentProduct.Quantity += quantity;
-                    currentProduct.Product.Stock -= quantity;
                     Lines.Append(currentProduct);
                 }
             }
