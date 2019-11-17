@@ -2,14 +2,18 @@
 {
   public class Product
   {
+      public Product()
+      {
+
+      }
       public Product(int id, int stock, double price, string name, string description)
-    {
-      Id = id;
-      Stock = stock;
-      Price = price;
-      Name = name;
-      Description = description;
-    }
+      {
+          Id = id;
+          Stock = stock;
+          Price = price;
+          Name = name;
+          Description = description;
+      }
 
     public int Id { get; set; }
 

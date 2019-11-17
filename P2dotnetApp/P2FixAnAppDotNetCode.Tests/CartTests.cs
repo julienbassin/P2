@@ -21,7 +21,6 @@ namespace P2FixAnAppDotNetCode.Tests
 
             cart.AddItem(product1, 1);
             cart.AddItem(product2, 1);
-
             Assert.NotEmpty(cart.Lines);
             Assert.Single(cart.Lines);
             Assert.Equal(2, cart.Lines.First().Quantity);
@@ -56,9 +55,9 @@ namespace P2FixAnAppDotNetCode.Tests
             cart.AddItem(products.First(p => p.Id == 1), 1);
             cart.AddItem(products.First(p => p.Id == 4), 3);
             cart.AddItem(products.First(p => p.Id == 5), 1);
+            
             double totalValue = cart.GetTotalValue();
             double expectedValue = 92.50 + 32.50 * 3 + 895.00;
-
             Assert.Equal(expectedValue, totalValue);
         }
 
@@ -67,7 +66,6 @@ namespace P2FixAnAppDotNetCode.Tests
         {
             Cart cart = new Cart();
             Product product = new Product(999, 0, 20, "name", "description");
-
             cart.AddItem(product, 1);
             Product result = cart.FindProductInCartLines(999);
 

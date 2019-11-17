@@ -20,7 +20,8 @@ namespace P2FixAnAppDotNetCode.Models
         /// <returns></returns>
         private List<CartLine> GetCartLineList()
         {
-            return new List<CartLine>();
+            var currentList = new List<CartLine>();
+            return currentList;
         }
 
         /// <summary>
@@ -29,22 +30,16 @@ namespace P2FixAnAppDotNetCode.Models
         public void AddItem(Product product, int quantity)
         {
             // TODO implement the method
-            //List<Product> Listproduct = new List<Product>();
-            CartLine currentProduct = new CartLine(product);
+            var currentProduct = new CartLine();
+            //currentQuantity.Quantity = quantity;
+            currentProduct.Product = product;
             if (quantity > 0)
             {
                 if (Lines.Contains(currentProduct))
-                {
                     currentProduct.Quantity += quantity;
-                    currentProduct.Product.Stock -= quantity;
-                }
-
                 else
-                {
                     currentProduct.Quantity += quantity;
-                    currentProduct.Product.Stock -= quantity;
-                    Lines.Append(currentProduct);
-                }
+                    Lines.Append(currentProduct);    
             }
         }
 
@@ -61,7 +56,7 @@ namespace P2FixAnAppDotNetCode.Models
         {
             // TODO implement the method
             double total = 0;
-            foreach (var item in GetCartLineList())
+            foreach (var item in Lines)
             {
                 total += item.Product.Price * item.Quantity;
             }
@@ -77,9 +72,8 @@ namespace P2FixAnAppDotNetCode.Models
             double totalAverage = 0;
             double totalQuantity = 0;
             double average = 0;
-            foreach (var item in GetCartLineList())
+            foreach (var item in Lines)
             {
-                Console.WriteLine($"{item.Product} ==> ${item.Quantity}");
                 totalAverage += (item.Product.Price * item.Quantity);
                 totalQuantity += item.Quantity;
             }
@@ -93,7 +87,8 @@ namespace P2FixAnAppDotNetCode.Models
         public Product FindProductInCartLines(int productId)
         {
             // TODO implement the method
-            return null;
+            Product productById = (Product) GetCartLineList().Where(p => p.Product.Id == productId).Select(x=> new Product()).FirstOrDefault();
+            return productById;
         }
 
         /// <summary>
@@ -110,24 +105,12 @@ namespace P2FixAnAppDotNetCode.Models
         public void Clear()
         {
             List<CartLine> cartLines = GetCartLineList();
-            cartLines.Clear();
+            cartLines.Clear();           
         }
     }
 
     public class CartLine
-    {
-
-        public CartLine(Product product)
-        {
-            this.Product = product;
-        }
-
-        public CartLine(Product product, int quantity)
-        {
-            this.Product = product;
-            this.Quantity = quantity;
-        }
-
+    {    
         public int OrderLineId { get; set; }
         public Product Product { get; set; }
         public int Quantity { get; set; }
