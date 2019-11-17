@@ -39,7 +39,12 @@ namespace P2FixAnAppDotNetCode.Models
                     currentProduct.Quantity += quantity;
                 else
                     currentProduct.Quantity += quantity;
+<<<<<<< HEAD
                     Lines.Append(currentProduct);    
+=======
+                    Lines.Append(currentProduct);
+                }
+>>>>>>> 77070bf2a26b5a4901787ca51404c5ad57ff0a17
             }
         }
 
