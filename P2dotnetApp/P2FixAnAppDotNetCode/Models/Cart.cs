@@ -12,7 +12,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// <summary>
         /// Read-only property for dispaly only
         /// </summary>
-        public IEnumerable<CartLine> Lines => GetCartLineList();
+        public List<CartLine> Lines => GetCartLineList();
 
         /// <summary>
         /// Return the actual cartline list
@@ -20,8 +20,9 @@ namespace P2FixAnAppDotNetCode.Models
         /// <returns></returns>
         private List<CartLine> GetCartLineList()
         {
-            var currentList = new List<CartLine>();
+            var currentList = new List <CartLine>();
             return currentList;
+
         }
 
         /// <summary>
@@ -31,6 +32,7 @@ namespace P2FixAnAppDotNetCode.Models
         {
             // TODO implement the method
             var currentProduct = new CartLine();
+            
             //currentQuantity.Quantity = quantity;
             currentProduct.Product = product;
             if (quantity > 0)
@@ -39,12 +41,7 @@ namespace P2FixAnAppDotNetCode.Models
                     currentProduct.Quantity += quantity;
                 else
                     currentProduct.Quantity += quantity;
-<<<<<<< HEAD
-                    Lines.Append(currentProduct);    
-=======
-                    Lines.Append(currentProduct);
-                }
->>>>>>> 77070bf2a26b5a4901787ca51404c5ad57ff0a17
+                    GetCartLineList().Add(currentProduct);
             }
         }
 
