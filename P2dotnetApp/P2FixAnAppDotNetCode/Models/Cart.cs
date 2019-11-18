@@ -13,16 +13,18 @@ namespace P2FixAnAppDotNetCode.Models
         /// Read-only property for dispaly only
         /// </summary>
         public List<CartLine> Lines => GetCartLineList();
-
+        public List<CartLine> currentCartList;
         /// <summary>
         /// Return the actual cartline list
         /// </summary>
         /// <returns></returns>
-        private List<CartLine> GetCartLineList()
+        public List<CartLine> GetCartLineList()
         {
-            var currentList = new List <CartLine>();
-            return currentList;
-
+            if (currentCartList == null)
+            {
+                this.currentCartList = new List<CartLine>();
+            }
+            return this.currentCartList;
         }
 
         /// <summary>
@@ -31,17 +33,20 @@ namespace P2FixAnAppDotNetCode.Models
         public void AddItem(Product product, int quantity)
         {
             // TODO implement the method
-            var currentProduct = new CartLine();
-            
-            //currentQuantity.Quantity = quantity;
-            currentProduct.Product = product;
-            if (quantity > 0)
+           
+
+            CartLine cartline = Lines.Where(p => p.Product.Id == product.Id).FirstOrDefault();
+
+            if(cartline != null)
             {
-                if (Lines.Contains(currentProduct))
-                    currentProduct.Quantity += quantity;
-                else
-                    currentProduct.Quantity += quantity;
-                    GetCartLineList().Add(currentProduct);
+                cartline.Quantity += quantity;
+            }
+            else
+            {
+                CartLine newCartLine = new CartLine();
+                newCartLine.Product = product;
+                newCartLine.Quantity = quantity;
+                GetCartLineList().Add(newCartLine);
             }
         }
 
@@ -89,7 +94,7 @@ namespace P2FixAnAppDotNetCode.Models
         public Product FindProductInCartLines(int productId)
         {
             // TODO implement the method
-            Product productById = (Product) GetCartLineList().Where(p => p.Product.Id == productId).Select(x=> new Product()).FirstOrDefault();
+            Product productById = (Product) GetCartLineList().Where(p => p.Product.Id == productId).Select(cartline => cartline.Product).FirstOrDefault();
             return productById;
         }
 
