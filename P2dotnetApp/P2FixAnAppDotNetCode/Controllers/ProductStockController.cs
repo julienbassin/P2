@@ -20,10 +20,6 @@ namespace P2FixAnAppDotNetCode.Controllers
             _productstocks.UpdateProductTempStocks(_product);
             return View();
         }
-
-        public void UpdateProductTempStocks()
-        {
-            _productstocks.UpdateProductTempStocks(_product);
-        }
+        
     }
 }
