@@ -32,6 +32,7 @@ namespace P2FixAnAppDotNetCode
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IProductStocks, ProductServicesTest>();
             services.AddMemoryCache();
             services.AddSession();
             services.AddMvc()

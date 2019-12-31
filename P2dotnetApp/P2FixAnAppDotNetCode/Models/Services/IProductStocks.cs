@@ -2,6 +2,6 @@
 {
     public interface IProductStocks
     {
-        void UpdateProductTempStocks(Product productName);
+        void GetProductTest();
     }
 }
