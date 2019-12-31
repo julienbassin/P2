@@ -15,10 +15,10 @@ namespace P2FixAnAppDotNetCode.Controllers
             _productstocks = productStocks;
         }
 
-        public IActionResult Index()
+        public IActionResult ProductStock()
         {
-            _productstocks.UpdateProductTempStocks(_product);
-            return View();
+            var result = _productstocks.GetProductTest(_product);
+            return View(result);
         }
         
     }
