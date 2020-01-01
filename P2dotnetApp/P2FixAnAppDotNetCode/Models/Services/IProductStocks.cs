@@ -1,7 +1,11 @@
-﻿namespace P2FixAnAppDotNetCode.Models.Services
+﻿using System;
+using System.Collections.Generic;
+
+
+namespace P2FixAnAppDotNetCode.Models.Services
 {
-    public interface IProductStocks
+    public interface IProductServiceTest
     {
-        Product GetProductTest(Product item);
+        IEnumerable<productTest> GetProducts();
     }
 }

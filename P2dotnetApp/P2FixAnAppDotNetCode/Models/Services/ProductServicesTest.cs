@@ -5,13 +5,23 @@ using System.Threading.Tasks;
 
 namespace P2FixAnAppDotNetCode.Models.Services
 {
-    public class ProductServicesTest : IProductStocks
+    public class productTest
     {
-        public Product GetProductTest(Product item)
-        {
+        public string Title { get; set; }
+    }
 
-            Console.WriteLine($"Dependency Injection for products, Name: {item.Name}, Price: {item.Price}, Stock: {item.Stock}");
-            return item;
+    public class ProductServicesTest : IProductServiceTest
+    {
+        private readonly List<productTest> productsTest = new List<productTest>
+        {
+          new productTest { Title= "DVD player" },
+          new productTest { Title= "TV" },
+          new productTest { Title= "Projector" }
+        };
+
+        public IEnumerable<productTest> GetProducts()
+        {
+            return productsTest.AsEnumerable();
         }
     }
 }

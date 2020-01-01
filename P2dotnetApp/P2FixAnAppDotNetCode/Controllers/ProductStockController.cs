@@ -7,19 +7,24 @@ namespace P2FixAnAppDotNetCode.Controllers
 {
     public class ProductStockController: Controller
     {
-        private readonly IProductStocks _productstocks;
-        private readonly Product _product = new Product(55, 25, 100.00, "Casque Bose", "casque de grandes qualité");
-
-        public ProductStockController(IProductStocks productStocks)
+        private readonly IProductServiceTest _productServicesTest;
+        public ProductStockController(IProductServiceTest productServicesTest)
         {
-            _productstocks = productStocks;
+            _productServicesTest = productServicesTest;
         }
 
-        public IActionResult ProductStock()
+        //public IActionResult ProductStock()
+        //{
+        //    var result = _productServicesTest.GetProducts();
+        //    return View(result);
+        //}
+
+        [HttpGet]
+        public IEnumerable<productTest> GetProducts()
         {
-            var result = _productstocks.GetProductTest(_product);
-            return View(result);
+            return _productServicesTest.GetProducts();
         }
+
         
     }
 }
