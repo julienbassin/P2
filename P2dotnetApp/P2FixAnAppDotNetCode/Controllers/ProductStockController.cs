@@ -8,6 +8,7 @@ namespace P2FixAnAppDotNetCode.Controllers
     public class ProductStockController: Controller
     {
         private readonly IProductServiceTest _productServicesTest;
+
         public ProductStockController(IProductServiceTest productServicesTest)
         {
             _productServicesTest = productServicesTest;

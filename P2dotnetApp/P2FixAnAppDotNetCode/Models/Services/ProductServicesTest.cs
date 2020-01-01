@@ -4,11 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace P2FixAnAppDotNetCode.Models.Services
-{
-    public class productTest
-    {
-        public string Title { get; set; }
-    }
+{    
 
     public class ProductServicesTest : IProductServiceTest
     {
