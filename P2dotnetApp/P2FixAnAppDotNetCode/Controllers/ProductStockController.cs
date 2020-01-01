@@ -13,18 +13,10 @@ namespace P2FixAnAppDotNetCode.Controllers
             _productServicesTest = productServicesTest;
         }
 
-        //public IActionResult ProductStock()
-        //{
-        //    var result = _productServicesTest.GetProducts();
-        //    return View(result);
-        //}
-
-        [HttpGet]
-        public IEnumerable<productTest> GetProducts()
+        public IActionResult ProductStock()
         {
-            return _productServicesTest.GetProducts();
+            var result = _productServicesTest.GetProducts();
+            return View(result);
         }
-
-        
     }
 }
