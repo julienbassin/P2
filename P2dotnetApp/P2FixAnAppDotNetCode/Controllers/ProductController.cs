@@ -9,18 +9,16 @@ namespace P2FixAnAppDotNetCode.Controllers
     {
         private readonly IProductService _productService;
         private readonly ILanguageService _languageService;
-        private readonly IProductServiceTest _productServiceTest;
 
-        public ProductController(IProductService productService, ILanguageService languageService, IProductServiceTest productServiceTest)
+        public ProductController(IProductService productService, ILanguageService languageService)
         {
             _productService = productService;
             _languageService = languageService;
-            _productServiceTest = productServiceTest;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<productTest> products = _productServiceTest.GetProducts();
+            IEnumerable<Product> products = _productService.GetAllProducts();
             return View(products);
         }
     }

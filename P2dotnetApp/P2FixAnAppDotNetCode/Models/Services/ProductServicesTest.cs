@@ -8,16 +8,27 @@ namespace P2FixAnAppDotNetCode.Models.Services
 
     public class ProductServicesTest : IProductServiceTest
     {
-        private readonly List<productTest> productsTest = new List<productTest>
-        {
-          new productTest { Title= "DVD player" },
-          new productTest { Title= "TV" },
-          new productTest { Title= "Projector" }
-        };
+        private List<Product> productTemp = new List<Product>();
 
-        public IEnumerable<productTest> GetProducts()
+        public List<Product> SaveTempProduct(Product item)
         {
-            return productsTest.AsEnumerable();
+            bool isEmpty = !productTemp.Any();
+            if(item == null)
+            {                
+                throw new Exception("Item is null");
+            }
+            else
+            {
+                productTemp.Add(item);
+            }
+
+            return productTemp;
+        }
+        
+
+        public List<Product> RestoreProductValue()
+        {
+            return productTemp;
         }
     }
 }

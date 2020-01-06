@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using P2FixAnAppDotNetCode.Models.Services;
 
 namespace P2FixAnAppDotNetCode.Models.Repositories
 {
@@ -9,11 +10,12 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
     public class ProductRepository : IProductRepository
     {
         private static List<Product> _products;
+        private ProductServicesTest _productStockValue = new ProductServicesTest();
 
         public ProductRepository()
         {
             _products = new List<Product>();
-            GenerateProductData();
+            GenerateProductData();            
         }
 
         /// <summary>
@@ -46,6 +48,7 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
         {
             Product product = _products.First(p => p.Id == productId);
             product.Stock = product.Stock - quantityToRemove;
+            _productStockValue.SaveTempProduct(product);
 
             if (product.Stock == 0)
                 _products.Remove(product);

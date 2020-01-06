@@ -1,6 +1,5 @@
 ﻿@using P2FixAnAppDotNetCode.Models
-@*@model IEnumerable<P2FixAnAppDotNetCode.Models.Product>*@
-@model IEnumerable<P2FixAnAppDotNetCode.Models.productTest>
+@model IEnumerable<P2FixAnAppDotNetCode.Models.Product>
 @{
     ViewData["Title"] = Localizer["ProductList"];
 }
@@ -8,15 +7,6 @@
 <br />
 
 <div id="panel-body">
-
-    @foreach (productTest p in Model)
-    {
-    <h3>@p.Title</h3>
-    }
-
-</div>
-
-@*<div id="panel-body">
     <table class="table table-bordered table-striped table-sm">
         <thead>
             <tr>
@@ -35,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (productTest p in Model)
+            @foreach (Product p in Model)
             {
                 <tr>
                     <td>@p.Name</td>
@@ -54,4 +44,4 @@
             }
         </tbody>
     </table>
-</div>*@
+</div>

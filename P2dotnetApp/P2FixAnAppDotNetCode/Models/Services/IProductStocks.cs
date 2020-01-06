@@ -6,6 +6,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
 {
     public interface IProductServiceTest
     {
-        IEnumerable<productTest> GetProducts();
+        List<Product> RestoreProductValue();
+        List<Product> SaveTempProduct(Product item);
     }
 }
