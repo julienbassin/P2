@@ -12,7 +12,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
 
         public List<Product> SaveTempProduct(Product item)
         {
-            bool isEmpty = !productTemp.Any();
+            //bool isEmpty = !productTemp.Any();
             if(item == null)
             {                
                 throw new Exception("Item is null");
@@ -28,6 +28,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
 
         public List<Product> RestoreProductValue()
         {
+
             return productTemp;
         }
     }

@@ -14,8 +14,17 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
 
         public ProductRepository()
         {
-            _products = new List<Product>();
-            GenerateProductData();            
+            if (_productStockValue.RestoreProductValue().Count > 0)
+            {
+                // check for product  count and return the list of products .
+                _products = _productStockValue.RestoreProductValue();
+            }
+            else
+            {
+                _products = new List<Product>();
+                GenerateProductData();
+            }
+                      
         }
 
         /// <summary>
