@@ -7,6 +7,6 @@ namespace P2FixAnAppDotNetCode.Models.Services
     public interface IProductServiceTest
     {
         List<Product> RestoreProductValue();
-        List<Product> SaveTempProduct(Product item);
+        List<Product> UpdatedTempProduct(Product item);
     }
 }

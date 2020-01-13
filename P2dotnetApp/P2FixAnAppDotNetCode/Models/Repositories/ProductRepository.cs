@@ -10,7 +10,7 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
     public class ProductRepository : IProductRepository
     {
         private static List<Product> _products;
-        private ProductServicesTest _productStockValue = new ProductServicesTest();
+        public ProductServicesTest _productStockValue = new ProductServicesTest();
 
         public ProductRepository()
         {
@@ -57,7 +57,7 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
         {
             Product product = _products.First(p => p.Id == productId);
             product.Stock = product.Stock - quantityToRemove;
-            _productStockValue.SaveTempProduct(product);
+            _productStockValue.UpdatedTempProduct(product);
 
             if (product.Stock == 0)
                 _products.Remove(product);
