@@ -19,10 +19,12 @@ namespace P2FixAnAppDotNetCode.Controllers
         }
 
         public IActionResult Index()
-        {           
-                if (_productServiceTest.RestoreProductValue().Count == 0)
+        {
+          
+                if (_productServiceTest.RestoreProductValue() == null)
                 {
-                    IEnumerable<Product> products = _productService.GetAllProducts();
+               // var temp = _productServiceTest.RestoreProductValue();
+                IEnumerable<Product> products = _productService.GetAllProducts();
                     return View(products);
                 }
                 else

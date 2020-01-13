@@ -8,7 +8,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
 
     public class ProductServicesTest : IProductServiceTest
     {
-        private List<Product> productTemp = new List<Product>();
+        private List<Product> productTemp ;
 
         public List<Product> SaveTempProduct(Product item)
         {
@@ -19,6 +19,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
             }
             else
             {
+
                 productTemp.Add(item);
             }
 
@@ -28,7 +29,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
 
         public List<Product> RestoreProductValue()
         {
-
+            var test = productTemp;
             return productTemp;
         }
     }

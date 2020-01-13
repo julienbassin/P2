@@ -14,7 +14,7 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
 
         public ProductRepository()
         {
-            if (_productStockValue.RestoreProductValue().Count > 0)
+            if (_productStockValue.RestoreProductValue() != null)
             {
                 // check for product  count and return the list of products .
                 _products = _productStockValue.RestoreProductValue();
