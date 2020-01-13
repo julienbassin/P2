@@ -13,18 +13,9 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
         private ProductServicesTest _productStockValue = new ProductServicesTest();
 
         public ProductRepository()
-        {
-            if (_productStockValue.RestoreProductValue() != null)
-            {
-                // check for product  count and return the list of products .
-                _products = _productStockValue.RestoreProductValue();
-            }
-            else
-            {
-                _products = new List<Product>();
-                GenerateProductData();
-            }
-                      
+        {            
+            _products = new List<Product>();
+            GenerateProductData();                      
         }
 
         /// <summary>

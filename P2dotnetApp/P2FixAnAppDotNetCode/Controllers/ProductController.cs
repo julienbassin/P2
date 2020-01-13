@@ -21,7 +21,7 @@ namespace P2FixAnAppDotNetCode.Controllers
         public IActionResult Index()
         {
           
-                if (_productServiceTest.RestoreProductValue() == null)
+                if (_productServiceTest.RestoreProductValue() != null)
                 {
                // var temp = _productServiceTest.RestoreProductValue();
                 IEnumerable<Product> products = _productService.GetAllProducts();
