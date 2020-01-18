@@ -54,6 +54,11 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
                 _products.Remove(product);
         }
 
-        
+        public void UpdateProduct(Product updateProduct)
+        {
+            
+            _products.Find().Stock = updateProduct.Stock;
+
+        }
     }
 }
