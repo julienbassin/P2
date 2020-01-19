@@ -11,17 +11,11 @@ namespace P2FixAnAppDotNetCode.Models.Services
         public static List<Product> tempLst;
 
         public List<Product> SaveTempProduct(Product item)
-        {
-            if(tempLst == null)
-            {
-                tempLst = new List<Product>();
-            }
-
+        {           
             bool contains = tempLst.Any(i => i.Id == item.Id);
 
             if (contains)
-            {
-                
+            {                
                 tempLst.Select(i => { i.Stock = item.Stock; return i; });
             }
             else

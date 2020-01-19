@@ -55,9 +55,9 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
         public void UpdateProductStocks(int productId, int quantityToRemove)
         {
             Product product = _products.First(p => p.Id == productId);
-            product.Stock = product.Stock - quantityToRemove;
-            
+            product.Stock = product.Stock - quantityToRemove;            
             _productStockValue.SaveTempProduct(product);
+            
             if (product.Stock == 0)
                 _products.Remove(product);
         }       
