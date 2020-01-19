@@ -13,9 +13,17 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
         private ProductServicesTest _productStockValue = new ProductServicesTest();
 
         public ProductRepository()
-        {            
-            _products = new List<Product>();
-            GenerateProductData();                      
+        {
+            if (_productStockValue.RestoreProductValue().Count > 0)
+            {
+                _products = _productStockValue.RestoreProductValue();
+            }
+            else
+            {
+                _products = new List<Product>();
+                GenerateProductData();
+            }
+                                  
         }
 
         /// <summary>
@@ -48,17 +56,11 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
         {
             Product product = _products.First(p => p.Id == productId);
             product.Stock = product.Stock - quantityToRemove;
+            
             _productStockValue.SaveTempProduct(product);
-
             if (product.Stock == 0)
                 _products.Remove(product);
-        }
-
-        public void UpdateProduct(Product updateProduct)
-        {
-            
-            _products.Find().Stock = updateProduct.Stock;
-
-        }
+        }       
+       
     }
 }

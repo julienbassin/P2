@@ -40,9 +40,7 @@ namespace P2FixAnAppDotNetCode.Tests
             cart.AddItem(products.Where(p => p.Id == 3).First(), 2);
             cart.AddItem(products.Where(p => p.Id == 5).First(), 3);
 
-            productService.UpdateProductQuantities(cart);
-
-            //Dependency injection here 
+            productService.UpdateProductQuantities(cart);            
 
             //Store the result of the first use of UpdateProductQuantities
 
@@ -65,7 +63,7 @@ namespace P2FixAnAppDotNetCode.Tests
             productService.UpdateProductQuantities(cart);
 
             Assert.Equal(8, products.Where(p => p.Id == 1).First().Stock);
-            Assert.Equal(25, products.Where(p => p.Id == 3).First().Stock);
+            Assert.Equal(26, products.Where(p => p.Id == 3).First().Stock);
             Assert.Equal(44, products.Where(p => p.Id == 5).First().Stock);
         }
 
