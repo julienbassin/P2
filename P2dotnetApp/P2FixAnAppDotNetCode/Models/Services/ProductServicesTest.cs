@@ -16,7 +16,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
 
             if (contains)
             {                
-                tempLst.Select(i => { i.Stock = item.Stock; return i; });
+                tempLst.Where(i=> i.Id == item.Id).Select(i => { i.Stock = item.Stock; return i; });
             }
             else
             {

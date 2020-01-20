@@ -11,19 +11,26 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
     {
         private static List<Product> _products;
         private ProductServicesTest _productStockValue = new ProductServicesTest();
+        private static bool isProductInitialized = false;
 
         public ProductRepository()
         {
-            if (_productStockValue.RestoreProductValue().Count > 0)
-            {
-                _products = _productStockValue.RestoreProductValue();
-            }
-            else
+            //if (_productStockValue.RestoreProductValue().Count > 0)
+            //{
+            //    _products = _productStockValue.RestoreProductValue();
+            //}
+            //else
+            //{
+
+            //}
+
+            if (! isProductInitialized)
             {
                 _products = new List<Product>();
                 GenerateProductData();
-            }
-                                  
+                isProductInitialized = true;
+            }          
+
         }
 
         /// <summary>
@@ -56,7 +63,7 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
         {
             Product product = _products.First(p => p.Id == productId);
             product.Stock = product.Stock - quantityToRemove;            
-            _productStockValue.SaveTempProduct(product);
+            //_productStockValue.SaveTempProduct(product);
             
             if (product.Stock == 0)
                 _products.Remove(product);
