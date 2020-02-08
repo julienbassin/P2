@@ -10,18 +10,9 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
     public class ProductRepository : IProductRepository
     {
         private static List<Product> _products = new List<Product>();
-        private ProductServicesTest _productStockValue = new ProductServicesTest();
 
         public ProductRepository()
-        {
-            //if (_productStockValue.RestoreProductValue().Count > 0)
-            //{
-            //    _products = _productStockValue.RestoreProductValue();
-            //}
-            //else
-            //{
-
-            //}
+        {         
 
             if (! _products.Any())
             {
