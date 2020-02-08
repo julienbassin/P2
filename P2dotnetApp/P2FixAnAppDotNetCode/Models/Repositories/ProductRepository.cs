@@ -9,9 +9,8 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
     /// </summary>
     public class ProductRepository : IProductRepository
     {
-        private static List<Product> _products;
+        private static List<Product> _products = new List<Product>();
         private ProductServicesTest _productStockValue = new ProductServicesTest();
-        private static bool isProductInitialized = false;
 
         public ProductRepository()
         {
@@ -24,11 +23,11 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
 
             //}
 
-            if (! isProductInitialized)
+            if (! _products.Any())
             {
-                _products = new List<Product>();
+                
                 GenerateProductData();
-                isProductInitialized = true;
+                
             }          
 
         }
