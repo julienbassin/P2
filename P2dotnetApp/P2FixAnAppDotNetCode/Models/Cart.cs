@@ -101,7 +101,9 @@ namespace P2FixAnAppDotNetCode.Models
         public Product FindProductInCartLines(int productId)
         {
             // TODO implement the method
-            Product productById = (Product) GetCartLineList().Where(p => p.Product.Id == productId).Select(cartline => cartline.Product).FirstOrDefault();
+            //var productbyID = GetCartLineList().firstordefault(x=>x.product.id == productid)
+            //{return productID.product}
+            Product productById = GetCartLineList().Where(p => p.Product.Id == productId).Select(cartline => cartline.Product).FirstOrDefault();
             return productById;
         }
 
